@@ -21,6 +21,20 @@ import javafx.scene.control.Label;
 public class Screen4Controller implements Initializable, ControlledScreen {
 
     ScreensController myController;
+    @FXML
+    private Label sun;
+    @FXML
+    private Label mon;
+    @FXML
+    private Label tue;
+    @FXML
+    private Label wed;
+    @FXML
+    private Label thr;
+    @FXML
+    private Label fri;
+    @FXML
+    private Label sat;
     
     @FXML
     private Label sun;

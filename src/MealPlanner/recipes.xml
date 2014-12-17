@@ -3,67 +3,29 @@
   <recipeList>
     <recipe title="Pasta">
       <ingredient name="Flour" number="1.0" type="cup"/>
-      <ingredient name="Rice" number="1.0" type="cup"/>
       <directions>I want pasta.</directions>
     </recipe>
     <recipe title="Pho">
-      <ingredient name="Flour" number="1.0" type="cup"/>
-      <ingredient name="Fish" number="1.0" type="cup"/>
+      <ingredient name="Noodles" number="1.0" type="cup"/>
       <directions>I want pho.</directions>
     </recipe>
     <recipe title="Cake">
-      <ingredient name="Flour" number="1.0" type="cup"/>
-      <ingredient name="Sugar" number="2.0" type="cup"/>
+      <ingredient name="Milk" number="1.0" type="cup"/>
       <directions>I want cake.</directions>
     </recipe>
     <recipe title="Pizza">
-      <ingredient name="Cheese" number="2.0" type="lbs"/>
-      <ingredient name="Sauce" number="4.0" type="cups"/>
-      <directions>Bake in oven for 45 min</directions>
-    </recipe>
-    <recipe title="French Toast">
-      <ingredient name="Cinamon" number="2.0" type="teaspoons"/>
-      <ingredient name="Lemon Sugar" number="3.0" type="tablespoons"/>
-      <directions>Fry in frying pan</directions>
-    </recipe>
-    <recipe title="Cheese Cake">
-      <ingredient name="Milk" number="4.0" type="cups"/>
-      <ingredient name="Creme Cheese" number="1.0" type="cups"/>
-      <directions>Mix well</directions>
-    </recipe>
-    <recipe title="Ravioli">
-      <directions>Boil till hot</directions>
-    </recipe>
-    <recipe title="Gyros">
-      <directions>Fry till black</directions>
+      <ingredient name="Cheese" number="1.0" type="lbs"/>
+      <directions/>
     </recipe>
   </recipeList>
   <rotateList>
-    <rotate title="Pancake">
-      <ingredient name="Flour" number="1.0" type="cup"/>
-      <ingredient name="Sugar" number="2.0" type="cup"/>
-      <directions>I want cake.</directions>
+    <rotate title="Pho">
+      <ingredient name="Noodles" number="1.0" type="cup"/>
+      <directions>I want pho.</directions>
     </rotate>
     <rotate title="Pizza">
-      <ingredient name="Cheese" number="2.0" type="lbs"/>
-      <ingredient name="Sauce" number="4.0" type="cups"/>
-      <directions>Bake in oven for 45 min</directions>
-    </rotate>
-    <rotate title="French Toast">
-      <ingredient name="Cinamon" number="2.0" type="teaspoons"/>
-      <ingredient name="Lemon Sugar" number="3.0" type="tablespoons"/>
-      <directions>Fry in frying pan</directions>
-    </rotate>
-    <rotate title="Cheese Cake">
-      <ingredient name="Milk" number="4.0" type="cups"/>
-      <ingredient name="Creme Cheese" number="1.0" type="cups"/>
-      <directions>Mix well</directions>
-    </rotate>
-    <rotate title="Ravioli">
-      <directions>Boil till hot</directions>
-    </rotate>
-    <rotate title="Gyros">
-      <directions>Fry till black</directions>
+      <ingredient name="Cheese" number="1.0" type="lbs"/>
+      <directions/>
     </rotate>
   </rotateList>
 </lists>

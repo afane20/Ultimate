@@ -49,6 +49,7 @@ public class MakeRecipeController {
 	private boolean okClicked = false;
 	
         private Recipe recipe;
+        Ingredient ing;
         Schedule sch = Schedule.getInstance();
         
         public MakeRecipeController(){
@@ -89,9 +90,7 @@ public class MakeRecipeController {
         * AddIngredient Button
         */
         public void addIngredient(ActionEvent event){
-        
-            
-            Ingredient ing = new Ingredient();
+            ing = new Ingredient();
             ing.setName(ingredientTitle.getText());
             ing.setNumber(Double.parseDouble(quantity.getText()));
             ing.setType(ingTypes.getValue());
