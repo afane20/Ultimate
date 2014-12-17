@@ -61,5 +61,6 @@
             <Label fx:id="sat" layoutX="10.0" layoutY="195.0" prefHeight="37.0" prefWidth="240.0" text="Label" />
          </children>
       </VBox>
+      <Button layoutX="490.0" layoutY="536.0" mnemonicParsing="false" text="Refresh" />
   </children>
 </AnchorPane>

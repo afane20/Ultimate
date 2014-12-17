@@ -169,20 +169,7 @@ public class Screen2Controller implements Initializable , ControlledScreen {
         */
     }
     
-    /**
-     * Save and Build
-     * @param even
-     * @return 
-     */
-     @FXML
-    public void saveButton(ActionEvent event){
-       FileManager files = new FileManager();
-       Property prop = new Property();
-       String file = prop.getFile();
-       Document xml = null;
-       xml = files.buildXmlDocument(Schedule.getInstance());
-       files.saveXmlDocument(xml, file);
-    }
+    
     
     /*
     * Display rotation list to listview

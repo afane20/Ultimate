@@ -36,20 +36,6 @@ public class Screen4Controller implements Initializable, ControlledScreen {
     @FXML
     private Label sat;
     
-//    @FXML
-//    private Label sun;
-//    @FXML
-//    private Label mon;
-//    @FXML
-//    private Label tue;
-//    @FXML
-//    private Label wed;
-//    @FXML
-//    private Label thr;
-//    @FXML
-//    private Label fri;
-//    @FXML
-//    private Label sat;
     
     
     
@@ -60,8 +46,15 @@ public class Screen4Controller implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        Schedule s = Schedule.getInstance();
         
-        mon.setText("Something");
+        mon.setText(s.getWeekList().get(0).getTitle());
+        tue.setText(s.getWeekList().get(1).getTitle());
+        wed.setText(s.getWeekList().get(2).getTitle());
+        thr.setText(s.getWeekList().get(3).getTitle());
+        fri.setText(s.getWeekList().get(4).getTitle());
+        sat.setText(s.getWeekList().get(5).getTitle());
+        sun.setText(s.getWeekList().get(6).getTitle());
         
         /*
         sun.setText(Schedule.getInstance().getRotateList().get(0).getTitle());

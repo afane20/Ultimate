@@ -18,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
+import org.w3c.dom.Document;
 
 
 
@@ -41,6 +42,7 @@ public class Screen1Controller implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         String file = prop.getFile();
         fm.readXmlFile(s, file);    
         Recipe todaysMeal = s.iterateThruSchedule();
@@ -76,6 +78,21 @@ public class Screen1Controller implements Initializable, ControlledScreen {
     }
     @FXML
     private Label label2;
+    
+    /**
+     * Save and Build
+     * @param even
+     * @return 
+     */
+     @FXML
+    public void saveButton(ActionEvent event){
+       FileManager files = new FileManager();
+       Property prop = new Property();
+       String file = prop.getFile();
+       Document xml = null;
+       xml = files.buildXmlDocument(Schedule.getInstance());
+       files.saveXmlDocument(xml, file);
+    }
     
     public void button1(ActionEvent event){
        // label1.setText("something");
