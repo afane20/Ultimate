@@ -90,6 +90,7 @@ public class MakeRecipeController {
         */
         public void addIngredient(ActionEvent event){
         
+            
             Ingredient ing = new Ingredient();
             ing.setName(ingredientTitle.getText());
             ing.setNumber(Double.parseDouble(quantity.getText()));
@@ -172,15 +173,9 @@ public class MakeRecipeController {
                     recipe.setIngredientList(sch.getTempList());
                     sch.getRecipeList().add(recipe);
                     
-                    
+                    sch.getTempList().clear();
                     
                 //}
-//			person.setFirstName(firstNameField.getText());
-//			person.setLastName(lastNameField.getText());
-//			person.setStreet(streetField.getText());
-//			person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
-//			person.setCity(cityField.getText());
-//			person.setBirthday(CalendarUtil.parse(birthdayField.getText()));
 //			
 			okClicked = true;
 			dialogStage.close();
