@@ -2,6 +2,11 @@
 
 package test3;
 
+import MealPlanner.FileManager;
+import MealPlanner.Ingredient;
+import MealPlanner.Property;
+import MealPlanner.Recipe;
+import MealPlanner.Schedule;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -11,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 
 
@@ -26,21 +32,27 @@ public class Screen1Controller implements Initializable, ControlledScreen {
     ScreensController myController;
 
     MealManager mealManager = MealManager.getInstance();
-    
+    Schedule s = Schedule.getInstance();
+    FileManager fm = new FileManager();
+    Property prop = new Property();
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String file = prop.getFile();
+        fm.readXmlFile(s, file);    
+        Recipe todaysMeal = s.iterateThruSchedule();
+        displayToTextArea();
     }
     
+    @FXML
+    private TextArea textArea;
+     
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
-    }
-    
-    
+    }    
 
     @FXML
     private void goToScreen2(ActionEvent event){
@@ -90,5 +102,18 @@ public class Screen1Controller implements Initializable, ControlledScreen {
         }
         // The Java 8 way to get the response value (with lambda expression).
         result.ifPresent(name -> System.out.println("Your name: " + name));
+    }
+  
+    public final void displayToTextArea() {
+        Recipe todaysMeal = s.iterateThruSchedule();
+        String display = todaysMeal.getTitle() + "\n\n";
+        display += "Ingredients: \n";
+        
+        for (Ingredient ing : todaysMeal.getIngredientList()) {
+            display += Double.toString(ing.getNumber()) + " " + ing.getType() + " " + ing.getName() + "\n";
+        }
+        
+        display += "\nDirections: \n" + todaysMeal.getDirections();
+        textArea.setText(display);
     }
 }

@@ -2,6 +2,8 @@
 
 package test3;
 
+import MealPlanner.FileManager;
+import MealPlanner.Property;
 import MealPlanner.Recipe;
 import MealPlanner.Schedule;
 import MealPlanner.ShoppingList;
@@ -37,6 +39,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Pair;
+import org.w3c.dom.Document;
 
 /**
  * FXML Controller class
@@ -48,13 +51,16 @@ public class Screen2Controller implements Initializable , ControlledScreen {
     private Stage primaryStage;
     ScreensController myController;
     private ObservableList<Recipe> data;
+    private AddRecipeController arc;
+    
     
     ShoppingList sl = ShoppingList.getInstance(); 
     
-  
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+         data = FXCollections.observableArrayList();
+         displayToListView();
     }
     
     @FXML
@@ -84,8 +90,8 @@ public class Screen2Controller implements Initializable , ControlledScreen {
        myController.setScreen(ScreensFramework.screen5ID);
     }
     
-
-    public boolean button1(ActionEvent even){
+    @FXML
+    public boolean button1(ActionEvent event){
         try {
             
             data = FXCollections.observableArrayList();
@@ -115,11 +121,13 @@ public class Screen2Controller implements Initializable , ControlledScreen {
         
         
         return controller.isOkClicked();
+        
 
         } catch (Exception ex){
         ex.printStackTrace();
         return false;
         }
+        
        // label1.setText("something");
         //tab1.
 //        label2.setText("Well something should change");
@@ -135,8 +143,15 @@ public class Screen2Controller implements Initializable , ControlledScreen {
     
     @FXML
     private Label label1;
-    public void button2(ActionEvent event){
-        TextInputDialog dialog = new TextInputDialog("walter");
+    public void remove(ActionEvent event){
+        
+        int index = listView.getSelectionModel().getSelectedIndex();
+        Schedule.getInstance().getRotateList().remove(index);
+        
+        displayToListView();
+        
+        
+        /*TextInputDialog dialog = new TextInputDialog("walter");
         dialog.setTitle("Text Input Dialog");
         dialog.setHeaderText("Look, a Text Input Dialog");
         dialog.setContentText("Please enter your name:");
@@ -151,8 +166,23 @@ public class Screen2Controller implements Initializable , ControlledScreen {
         }
         // The Java 8 way to get the response value (with lambda expression).
         result.ifPresent(name -> System.out.println("Your name: " + name));
+        */
     }
     
+    /**
+     * Save and Build
+     * @param even
+     * @return 
+     */
+     @FXML
+    public void saveButton(ActionEvent event){
+       FileManager files = new FileManager();
+       Property prop = new Property();
+       String file = prop.getFile();
+       Document xml = null;
+       xml = files.buildXmlDocument(Schedule.getInstance());
+       files.saveXmlDocument(xml, file);
+    }
     
     /*
     * Display rotation list to listview

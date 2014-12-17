@@ -5,11 +5,21 @@
  */
 package test3;
 
+import MealPlanner.Ingredient;
+import MealPlanner.Recipe;
+import MealPlanner.Schedule;
+import MealPlanner.ShoppingList;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -19,14 +29,29 @@ import javafx.fxml.Initializable;
 public class Screen5Controller implements Initializable, ControlledScreen {
 
     ScreensController myController;
+    private ObservableList<Ingredient> ingData;
+    
+    ShoppingList shoppingList = ShoppingList.getInstance();
+    Schedule s = Schedule.getInstance();
+    
+    @FXML
+    private ListView<Ingredient> listView;
+    
+    @FXML
+    private TextArea commonList;
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        commonList.setText("Enter common items here...");
+        ingData = FXCollections.observableArrayList();
+        displayToListView();
     }    
+    
     
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
@@ -51,5 +76,40 @@ public class Screen5Controller implements Initializable, ControlledScreen {
     private void goToScreen4(ActionEvent event){
        myController.setScreen(ScreensFramework.screen4ID);
     }
-    
+        
+     public final void refresh(){
+          displayToListView();
+     }
+   
+    public final void displayToListView(){
+         
+        ingData.clear(); // clear items from listview
+         
+        s.rotateRecipes();
+        s.makeWeekIngredient();       
+        shoppingList.searchIngredientList(s);
+        
+        // Ingredient list after the merge
+        for (Ingredient ing1 : shoppingList.getShoppingList()) {
+            ingData.add(ing1);
+        } 
+         
+        listView.setItems(ingData);
+        listView.setCellFactory(new Callback<ListView<Ingredient>, ListCell<Ingredient>>() {
+                    
+            @Override
+            public ListCell<Ingredient> call(ListView<Ingredient> param){
+                ListCell<Ingredient> cell = new ListCell<Ingredient>(){
+                    @Override
+                    public void updateItem(Ingredient ing1, boolean empty) {
+                        super.updateItem(ing1, empty);
+                        if (ing1 != null){
+                            setText(ing1.getName() + " " + ing1.getNumber() + " " + ing1.getType());                                     
+                        }
+                    }
+                };   
+                return cell;                   
+            };
+        });
+     } 
 }

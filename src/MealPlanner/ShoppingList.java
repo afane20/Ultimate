@@ -22,19 +22,14 @@ import java.util.Map;
 public class ShoppingList {
     
     private static String commonItems;
-    private static List<Ingredient> shoppingList;
-    
-    private static Map<Ingredient, Ingredient> ingredientMap;
-    
+    private static List<Ingredient> shoppingList;   
     private static ShoppingList instance = new ShoppingList();
     
     private ShoppingList(){}
     
     public static ShoppingList getInstance() {
-        shoppingList = new ArrayList();
-        
+        shoppingList = new ArrayList();        
         commonItems = "";
-        ingredientMap = new HashMap<>();
         return instance;
     }
     
@@ -44,7 +39,6 @@ public class ShoppingList {
      * @return 
      */
     public String getCommonItem() {return commonItems;}
-
     public List<Ingredient> getShoppingList() {
         return shoppingList;
     }
@@ -67,30 +61,16 @@ public class ShoppingList {
     public void displayShoppingList() {
         System.out.println("Common List: ");
         System.out.println(commonItems);
-            
-        System.out.println("Schedule List: ");
-        //for (Ingredient ing : schedule.getWeekIngredientList()) {
-        //   System.out.println(ing);
-        //}
     }
-  
-   
-        
-        //for (String d : getScheduleList()) {
-        //    for (String a : getIngredientList()) {
-        //        System.out.println("Menu Ingredient List:");
-        //        getShoppingList().add(a);
-        //    }
-        // }
     
      /**
      * Master list of ingredients to add together same ingredients
      * Make xml for ingredients to easily add stuff
      * @param schedule
-     * @param scheduletogether
      */     
     public void searchIngredientList(Schedule schedule) {
         boolean first = true;
+        shoppingList.clear();
         for (int count = 0; count < schedule.getWeekIngredientList().size(); count++) {
             Ingredient ing1 = schedule.getWeekIngredientList().get(count);
             // The shoppingList has to have at least one thing in it to traverse
