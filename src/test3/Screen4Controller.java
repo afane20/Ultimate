@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -19,13 +20,28 @@ import javafx.fxml.Initializable;
 public class Screen4Controller implements Initializable, ControlledScreen {
 
     ScreensController myController;
+    @FXML
+    private Label sun;
+    @FXML
+    private Label mon;
+    @FXML
+    private Label tue;
+    @FXML
+    private Label wed;
+    @FXML
+    private Label thr;
+    @FXML
+    private Label fri;
+    @FXML
+    private Label sat;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //
+        sun.setText("Something");
     }    
     
     public void setScreenParent(ScreensController screenParent){
